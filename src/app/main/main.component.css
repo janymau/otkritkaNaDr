@@ -1,0 +1,236 @@
+/* Основные цвета */
+
+:root {
+    --pink: #FFB6C1;
+    --light-pink: #FFE4E1;
+    --dark-pink: #DB7093;
+    --text-color: #5A3D3D;
+}
+
+
+/* Основные стили */
+
+.birthday-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    margin-bottom: 0;
+}
+
+
+/* Текстовые элементы */
+
+.question,
+.hint,
+.answer {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin: 0;
+}
+
+.question {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(30) 1 forwards, blink 0.1s, disappear 1s ease-in-out 5s forwards;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--dark-pink);
+}
+
+.hint {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 5s forwards, fadeOut 1s ease-in-out 9s forwards;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    color: var(--dark-pink);
+}
+
+.answer {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 10s forwards, fadeOut 1s ease-in-out 15s forwards;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--dark-pink);
+}
+
+
+/* Фото мамы */
+
+.mama-photo {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 15s forwards;
+}
+
+.mama-photo img {
+    width: min(90vw, 500px);
+    height: min(90vw, 500px);
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid var(--light-pink);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.mama-photo:active {
+    transform: scale(0.98);
+}
+
+
+/* Кнопка музыки */
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.music-btn {
+    background-color: #b6c1ff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 15s forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.music-btn:hover {
+    background-color: var(--dark-pink);
+    transform: translateY(-2px);
+}
+
+
+/* Карточки поздравлений */
+
+.greetings-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    background-color: var(--light-pink);
+}
+
+.greetings-track {
+    display: flex;
+    width: max-content;
+    animation: scrollLeft 30s linear infinite;
+}
+
+.greeting-card {
+    flex: 0 0 auto;
+    width: 280px;
+    height: 400px;
+    margin: 0 10px;
+    background-color: #b6c1ff;
+    opacity: 0.89;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 2px solid var(--pink);
+}
+
+.greeting-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.greeting-card p {
+    font-size: 20px;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+
+/* Анимации */
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink {
+    from,
+    to {
+        border-color: transparent
+    }
+    50% {
+        border-color: var(--dark-pink)
+    }
+}
+
+@keyframes disappear {
+    to {
+        opacity: 0;
+        visibility: hidden
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0;
+        visibility: hidden
+    }
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0)
+    }
+    100% {
+        transform: translateX(-50%)
+    }
+}
+
+
+/* Адаптивность */
+
+@media (max-width: 600px) {
+    .greeting-card {
+        width: 220px;
+        margin: 0 10px;
+    }
+    .question {
+        font-size: 27px;
+    }
+    .greeting-card img {
+        height: 200px;
+    }
+    .mama-photo img {
+        width: 85vw;
+        height: 85vw;
+    }
+}

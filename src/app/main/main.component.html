@@ -1,0 +1,29 @@
+<div class="birthday-card">
+    <h1 class="question">Бүгін кімнің туған күні екен?🤔</h1>
+    <h2 class="hint">Кімнің?</h2>
+    <h1 class="answer">Бүгін маманың туған күні!! 💌💋</h1>
+
+    <button class="mama-photo" onclick="document.getElementById('mamaAhSound').play()">
+        <img src="assets/mama.jpg" alt="Маманың суреті" />
+    </button>
+
+    <div class="controls">
+        <audio id="mamaAhSound" src="assets/a1.mp3"></audio>
+        <audio id="tuganKun" src="assets/tugan.mp3"></audio>
+        <button class="music-btn" (click)="startMusic(); startPozdravlenye()">🔊 Олен Косу</button>
+        <button class="music-btn" (click)="goTo()">Сыйлықты көру!</button>
+    </div>
+</div>
+
+<div class="greetings-wrapper" #otkritki style="display: none;">
+    <div class="greetings-track">
+        <div *ngFor="let card of cards" class="greeting-card">
+            <img [src]="card.image" [alt]="card.alt">
+            <p>{{card.message}}</p>
+        </div>
+        <div *ngFor="let card of cards" class="greeting-card">
+            <img [src]="card.image" [alt]="card.alt">
+            <p>{{card.message}}</p>
+        </div>
+    </div>
+</div>
